@@ -1,0 +1,1 @@
+# Had to follow this answer to be able to use livereload: https://stackoverflow.com/a/65547010/2434460
