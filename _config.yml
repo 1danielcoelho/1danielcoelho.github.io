@@ -1,5 +1,4 @@
 # Dependencies
-markdown: redcarpet
 highlighter: pygments
 
 # Permalinks
@@ -10,7 +9,7 @@ title: Daniel Coelho's blog
 email: 1danielcoelho@gmail.com
 tagline: 'A Jekyll theme'
 description: 'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
-url: ""
+url: "1danielcoelho.github.io"
 baseurl: "/"
 github: [metadata]
 
@@ -25,6 +24,6 @@ version: 2.1.0
 
 exclude:
   - todo.md
-  - LICENSE.Hyde.md
-  - LICENSE.Poole.md
+  - third_party_licenses/LICENSE.Hyde.md
+  - third_party_licenses/LICENSE.Poole.md
   - LICENSE
