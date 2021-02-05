@@ -25,3 +25,6 @@ version: 2.1.0
 
 exclude:
   - todo.md
+  - LICENSE.Hyde.md
+  - LICENSE.Poole.md
+  - LICENSE
