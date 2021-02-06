@@ -1,9 +1,12 @@
 # TODO
-- Is it failing to get fonts or?
 - Link to github, linked in, email, rss?
-- About/Home page
-    - About the page, document how I've done it
 - Actually write some stuff
+- Remove lorem ipsum stuff everywhere
+- Favicon
+- Remember that I can do this:
+<p class="message">
+  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
+</p>
 
 # Fixes I've had to do to get this working
 - Follow this answer to be able to use livereload: https://stackoverflow.com/a/65547010/2434460

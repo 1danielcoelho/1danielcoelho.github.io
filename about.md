@@ -3,28 +3,20 @@ layout: page
 title: About
 ---
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
-</p>
+<h2>me</h2>
 
-In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+![me](/public/me.jpg "me in front of Neuschwanstein with Neuschwanstein cropped out")
 
-There are currently two themes built on Poole:
+I'm a senior software engineer with experience in C++, 3D, Unreal Engine and some biomedical engineering. Here is my full [CV](some_file.pdf).
 
-* [Hyde](https://hyde.getpoole.com)
-* [Lanyon](https://lanyon.getpoole.com)
+I'm sort of a generalist, and at the moment my main areas of interest are 3D graphics, space and AI.
 
-Learn more and contribute on [GitHub](https://github.com/poole).
+<h2>this page</h2>
 
-## Setup
+The main goal of this website is to get me embarassed for having an empty website, so that I feel more pressure to actually complete my side projects and write more. I'll probably write mostly about software engineering, but maybe about other stuff too.
 
-Some fun facts about the setup of this project include:
+I don't really like webdev so "I" "built" this using [GitHub pages](https://pages.github.com/), [Jekyll](https://docs.github.com/en/github/working-with-github-pages/setting-up-a-github-pages-site-with-jekyll) and the [Hyde theme for Jekyll](https://github.com/poole/hyde). For post comments I used [Utterances](https://utteranc.es/) which is amazing and automatically redirects the comments into a GitHub issue (on the [repo](https://github.com/1danielcoelho/1danielcoelho.github.io) of this very page) for each post. This was all free (so far).
 
-* Built for [Jekyll](https://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](https://sublimetext.com), an amazing code editor
-* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
+You can see the page source (as well as the cool GitHub issue comments) on [the page's repo](https://github.com/1danielcoelho/1danielcoelho.github.io). If you're going to do something similar, I recommend having a look at the [todo.md file](https://github.com/1danielcoelho/1danielcoelho.github.io/blob/main/todo.md) in there to check out a couple of fixes I've had to do to get this working.
 
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
-
-Thanks for reading!
+Please forgive me about the Google Analytics script...
