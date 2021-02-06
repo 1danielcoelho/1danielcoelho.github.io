@@ -1,5 +1,4 @@
 # TODO
-- Utterances for comments
 - About/Home page
     - About the page, document how I've done it
 - Actually write some stuff
