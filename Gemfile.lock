@@ -271,7 +271,6 @@ DEPENDENCIES
   jekyll
   jekyll-feed (~> 0.12)
   jekyll-gist
-  jekyll-paginate
   jekyll-seo-tag
   tzinfo (~> 1.2)
   tzinfo-data

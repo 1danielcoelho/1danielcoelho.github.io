@@ -1,5 +1,5 @@
-# Permalinks
-permalink: pretty
+# Makes it so that the post URL doesn't have the date in it
+permalink: /:title/
 
 # Setup
 title: Daniel Coelho's blog
@@ -14,7 +14,7 @@ author:
   name: 'Daniel Coelho'
   url: https://twitter.com/mdo
 
-paginate: 1
+show_excerpts: true
 
 # Custom vars
 version: 2.1.0

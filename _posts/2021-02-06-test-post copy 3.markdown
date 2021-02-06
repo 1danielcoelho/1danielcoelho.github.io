@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2021-02-05 16:17:01 -0300
-tag: "other test"
+title:  "Test post!"
+date:   2020-02-05 16:17:01 -0300
+tags: test other
 ---
 testtttq
 

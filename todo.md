@@ -1,4 +1,6 @@
 # TODO
+- Is it failing to get fonts or?
+- Link to github, linked in, email, rss?
 - About/Home page
     - About the page, document how I've done it
 - Actually write some stuff
