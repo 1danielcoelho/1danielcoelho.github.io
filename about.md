@@ -5,7 +5,7 @@ title: About
 
 <h2>me</h2>
 
-![me](/public/me.jpg "me in front of Neuschwanstein with Neuschwanstein cropped out")
+![me](/public/me.jpg "2014 me next to Neuschwanstein with Neuschwanstein cropped out")
 
 I'm a senior software engineer with experience in C++, 3D, Unreal Engine and some biomedical engineering. Here is my full [CV](some_file.pdf).
 

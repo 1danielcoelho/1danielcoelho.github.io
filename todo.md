@@ -1,8 +1,6 @@
 # TODO
-- Link to github, linked in, email, rss?
 - Actually write some stuff
 - Remove lorem ipsum stuff everywhere
-- Favicon
 - Remember that I can do this:
 <p class="message">
   Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!

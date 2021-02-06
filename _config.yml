@@ -3,7 +3,6 @@ permalink: /:title/
 
 # Setup
 title: Daniel Coelho's blog
-email: 1danielcoelho@gmail.com
 tagline: 'Software engineering and other stuff'
 description: 'Software engineering and other stuff'
 url: "https://1danielcoelho.github.io"
@@ -11,8 +10,10 @@ baseurl: "/"
 github: [metadata]
 
 author:
-  name: 'Daniel Coelho'
-  url: https://twitter.com/mdo
+  name: Daniel Coelho
+  github: 1danielcoelho
+  email: 1danielcoelho@gmail.com
+  linkedin: daniel-coelho-103109b7
 
 show_excerpts: true
 
