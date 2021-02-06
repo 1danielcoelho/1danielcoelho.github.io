@@ -8,14 +8,14 @@ tags: test first second third fourth apple banana orange thing color red blue gr
 
 -----
 
-Poole is the butler for [Jekyll](http://jekyllrb.com), the static site generator. It's designed and developed by [@mdo](https://twitter.com/mdo) to provide a clear and concise foundational setup for any Jekyll site. It does so by furnishing a full vanilla Jekyll install with example layouts, pages, posts, and styles.
+Poole is the butler for [Jekyll](//jekyllrb.com), the static site generator. It's designed and developed by [@mdo](https://twitter.com/mdo) to provide a clear and concise foundational setup for any Jekyll site. It does so by furnishing a full vanilla Jekyll install with example layouts, pages, posts, and styles.
 
 This demo site was last updated {{ site.time | date: "%B %d, %Y" }}.
 
 There are currently two themes built on Poole:
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
+* [Hyde](//hyde.getpoole.com)
+* [Lanyon](//lanyon.getpoole.com)
 
 Learn more and contribute on [GitHub]({{ site.github.repo }}).
 
