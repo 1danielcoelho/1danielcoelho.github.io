@@ -1,6 +1,4 @@
 # TODO
-- Fix RSS feed (works locally somehow?)
-- Remove lorem ipsum stuff everywhere
 - Actually write some stuff
 - Remember that I can do this:
 <p class="message">
