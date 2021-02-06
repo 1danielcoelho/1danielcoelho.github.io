@@ -1,3 +1,9 @@
+# TODO
+- Utterances for comments
+- About/Home page
+    - About the page, document how I've done it
+- Actually write some stuff
+
 # Fixes I've had to do to get this working
 - Follow this answer to be able to use livereload: https://stackoverflow.com/a/65547010/2434460
 - Had to add `github: [metadata]` to the _config.yml file to suppress that Github API metadata not found message
