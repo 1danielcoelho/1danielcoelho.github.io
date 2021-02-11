@@ -1,6 +1,8 @@
 # Makes it so that the post URL doesn't have the date in it
 permalink: /:title/
 
+highlighter: rouge
+
 # Setup
 title: Daniel Coelho's blog
 tagline: 'Software engineering and other stuff'

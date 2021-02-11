@@ -1,3 +1,6 @@
+# Guide
+- How to run local copy with livereload: `bundle exec jekyll serve --livereload`
+
 # TODO
 - Actually write some stuff
 - Remember that I can do this:
