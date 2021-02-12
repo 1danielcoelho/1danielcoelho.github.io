@@ -156,12 +156,11 @@ abbr[title] {
 /* Code */
 code,
 pre {
-  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-family: Consolas, "Courier New", monospace;
 }
 code {
   padding: 0.25em 0.5em;
   font-size: 85%;
-  color: #bf616a;
   background-color: #f9f9f9;
   border-radius: 3px;
 }
@@ -365,12 +364,12 @@ tbody tr:nth-child(odd) th {
   margin-right: 0.1rem;
   padding-left: 0.3rem;
   padding-right: 0.3rem;
-  color: rgba(100, 100, 100, 1.0);
+  color: rgba(100, 100, 100, 1);
 }
 
 /* Hack so that the firs tag of tag index aligns with the height of h3 on other pages */
 .post-tag-title {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 /* Related posts */
