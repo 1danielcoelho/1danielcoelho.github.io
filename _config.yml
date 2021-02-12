@@ -1,13 +1,6 @@
 # Makes it so that the post URL doesn't have the date in it
 permalink: /:title/
 
-highlighter: none
-
-# markdown: kramdown
-# kramdown:
-#    syntax_highlighter_opts:
-#       disable : true
-
 # Setup
 title: Daniel Coelho's blog
 tagline: 'Software engineering and other stuff'
@@ -23,9 +16,6 @@ author:
   linkedin: daniel-coelho-103109b7
 
 show_excerpts: true
-
-# Custom vars
-version: 2.1.0
 
 exclude:
   - todo.md
