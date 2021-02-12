@@ -128,3 +128,11 @@ pre[class*="language-"] {
 .token.macro.property > .token.string {
   color: #999;
 }
+
+.token.macro-name {
+  color: #bd63c5 !important;
+}
+
+.token.macro.property > .token.expression {
+  color: #bd63c5 !important;
+}
