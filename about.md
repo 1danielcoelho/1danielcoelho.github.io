@@ -5,9 +5,9 @@ title: About
 
 <h2>me</h2>
 
-![me](/public/me.jpg "2014 me next to Neuschwanstein with Neuschwanstein cropped out")
+![me](/assets/images/me.jpg "2014 me next to Neuschwanstein with Neuschwanstein cropped out")
 
-I'm a senior software engineer with experience in C++, 3D, Unreal Engine and some biomedical engineering. Here is my full [CV](/public/cv.pdf).
+I'm a senior software engineer with experience in C++, 3D, Unreal Engine and some biomedical engineering. Here is my full [CV](/assets/cv.pdf).
 
 I'm sort of a generalist, and at the moment my main areas of interest are 3D graphics, space and AI.
 

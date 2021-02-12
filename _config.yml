@@ -1,6 +1,11 @@
 # Makes it so that the post URL doesn't have the date in it
 permalink: /:title/
 
+markdown: kramdown
+kramdown:
+   syntax_highlighter_opts:
+      disable : true
+
 # Setup
 title: Daniel Coelho's blog
 tagline: 'Software engineering and other stuff'
@@ -22,3 +27,6 @@ exclude:
   - third_party_licenses/LICENSE.Hyde.md
   - third_party_licenses/LICENSE.Poole.md
   - LICENSE
+
+plugins:
+  - jekyll-prism-plugin
