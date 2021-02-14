@@ -11,6 +11,7 @@
     - Make sure post has a descriptive title that is as short as possible
     - Make sure post has a valid description with less than 160 characters
     - Make sure file name doesn't have "and", "to", "for", and etc. words 
+- Test page on lighthouse
 
 # Fixes I've had to do to get this working
 - Follow this answer to be able to use livereload: https://stackoverflow.com/a/65547010/2434460
