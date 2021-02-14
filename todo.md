@@ -2,6 +2,9 @@
 - How to run local copy with livereload: `bundle exec jekyll serve --livereload`
 - When adding a new plugin: `bundle update` then `bundle install`
 
+# TODO
+- Find an easy way of converting all links to _blank noopener nofollow (all plugins seem to be broken)
+
 # New post checklist
 - Make sure post has ok tags
 - Make sure images are clickable by changing ![alt text](img path) to [![alt text](img path)](img path)
