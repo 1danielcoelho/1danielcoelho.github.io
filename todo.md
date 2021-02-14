@@ -1,12 +1,16 @@
-# Guide
+# Commands
 - How to run local copy with livereload: `bundle exec jekyll serve --livereload`
+- When adding a new plugin: `bundle update` then `bundle install`
 
-# TODO
-- Actually write some stuff
-- Remember that I can do this:
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
-</p>
+# New post checklist
+- Make sure post has ok tags
+- Make sure images are clickable by changing ![alt text](img path) to [![alt text](img path)](img path)
+- Make sure images have OK alt text
+- Make sure first paragraph is OK for the excerpt on the main page
+- SEO:
+    - Make sure post has a descriptive title that is as short as possible
+    - Make sure post has a valid description with less than 160 characters
+    - Make sure file name doesn't have "and", "to", "for", and etc. words 
 
 # Fixes I've had to do to get this working
 - Follow this answer to be able to use livereload: https://stackoverflow.com/a/65547010/2434460
