@@ -24,29 +24,6 @@
         {% endif %}
     </title>
     
-    <!-- From https://blog.webjeda.com/optimize-jekyll-seo/ -->
-    <meta itemprop="description" name="description" content="{% if page.description %}{{ page.description | truncate: 160 }}{% else %}{{ site.description | truncate: 160  }}{% endif %}" />
-
-    <!-- Open Graph tags. From https://blog.webjeda.com/optimize-jekyll-seo/ -->
-    <meta property="og:title" content="{%if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-    <meta property="og:image" content="{{ site.url }}{% if page.image %}{{ page.image }}{% else %}{{ site.image }}{% endif %}" />
-    <!-- Optional Open Graph tags -->
-    <meta property="og:locale" content="en_US">
-    <meta property="og:site_name" content="Daniel Coelho's Blog">
-    <meta property="article:publisher" content="https://github.com/1danielcoelho" />
-    <meta property="article:author" content="https://github.com/1danielcoelho" />
-    <meta property="article:published_time" content="{{ page.date }}" />
-    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-
-    <!-- Twitter tags. From https://blog.webjeda.com/optimize-jekyll-seo/ -->
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="{%if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-    <meta name="twitter:site" content="@github" />
-    <meta name="twitter:creator" content="@_daniel_coelho_">
-
     <!-- CSS -->
     <link rel="stylesheet" href="/assets/css/poole.css">
     <link rel="stylesheet" href="/assets/css/hyde.css">
@@ -61,6 +38,5 @@
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 
-    <!-- Canonical link to prevent page/ and page/index.html from being interpreted as different. From https://blog.webjeda.com/optimize-jekyll-seo/ -->
-    <link rel="canonical" href="{{ page.url | prepend: site.url }}">
+    {% seo %}
 </head>

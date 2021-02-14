@@ -6,20 +6,31 @@ kramdown:
    syntax_highlighter_opts:
       disable : true
 
-# Setup
-title: Daniel Coelho's blog
+title: Daniel Coelho's Blog
 tagline: 'Software engineering and other stuff'
 description: 'Blog posts about software engineering, Unreal Engine, AI, and more. Also lists my personal projects (whenever I finish them)'
 url: "https://1danielcoelho.github.io"
 baseurl: "/"
 github: [metadata]
-image: '/assets/images/me.jpg'
+logo: '/assets/images/me.jpg'
 
 author:
   name: Daniel Coelho
   github: 1danielcoelho
   email: 1danielcoelho@gmail.com
   linkedin: daniel-coelho-103109b7
+  twitter: _daniel_coelho_
+
+twitter:
+  card: summary
+  username: _daniel_coelho_
+
+social:
+  name: Daniel Coelho
+  links:
+    - https://www.linkedin.com/in/daniel-coelho-103109b7
+    - https://github.com/1danielcoelho
+    - https://twitter.com/_daniel_coelho_
 
 show_excerpts: true
 
@@ -32,3 +43,4 @@ exclude:
 plugins:
   - jekyll-prism-plugin
   - jekyll-sitemap
+  - jekyll-seo-tag
