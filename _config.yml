@@ -30,3 +30,4 @@ exclude:
 
 plugins:
   - jekyll-prism-plugin
+  - jekyll-sitemap
