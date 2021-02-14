@@ -12,7 +12,9 @@ description: 'Blog posts about software engineering, Unreal Engine, AI, and more
 url: "https://1danielcoelho.github.io"
 baseurl: "/"
 github: [metadata]
+
 logo: '/assets/images/me.jpg'
+image: '/assets/images/me.jpg'
 
 author:
   name: Daniel Coelho
