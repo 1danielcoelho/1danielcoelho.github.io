@@ -57,8 +57,8 @@ html {
 }
 
 body {
-  color: #515151;
-  background-color: #fff;
+  color: #aeaeae;
+  background-color: #111;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -87,7 +87,7 @@ h6 {
   margin-bottom: 0.5rem;
   font-weight: bold;
   line-height: 1.25;
-  color: #313131;
+  color: #cecece;
   text-rendering: optimizeLegibility;
 }
 h1 {
@@ -115,7 +115,7 @@ p {
 }
 
 strong {
-  color: #303030;
+  color: #cfcfcf;
 }
 
 /* Lists */
@@ -138,19 +138,19 @@ hr {
   position: relative;
   margin: 1.5rem 0;
   border: 0;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #fff;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #444;
 }
 
 abbr {
   font-size: 85%;
   font-weight: bold;
-  color: #555;
+  color: #aaaaaa;
   text-transform: uppercase;
 }
 abbr[title] {
   cursor: help;
-  border-bottom: 1px dotted #e5e5e5;
+  border-bottom: 1px dotted #1a1a1a;
 }
 
 /* Code */
@@ -161,7 +161,7 @@ pre {
 code {
   padding: 0.25em 0.5em;
   font-size: 85%;
-  background-color: #f0f0f0;
+  background-color: #2f333a;
   border-radius: 3px;
 }
 pre {
@@ -337,7 +337,7 @@ tbody tr:nth-child(odd) th {
 .page-title,
 .post-title,
 .post-title a {
-  color: #303030;
+  color: #cfcfcf;
 }
 .page-title,
 .post-title {
@@ -358,13 +358,13 @@ tbody tr:nth-child(odd) th {
 
 .post-tag {
   border-radius: 4px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(100, 200, 200, 0.4);
   display: inline-block;
   margin-left: 0.1rem;
   margin-right: 0.1rem;
   padding-left: 0.3rem;
   padding-right: 0.3rem;
-  color: rgba(100, 100, 100, 1);
+  color: #cfcfcf;
 }
 
 /* Hack so that the firs tag of tag index aligns with the height of h3 on other pages */
