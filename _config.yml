@@ -46,4 +46,3 @@ plugins:
   - jekyll-prism-plugin
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-target-blank
