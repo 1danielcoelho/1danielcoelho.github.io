@@ -13,7 +13,7 @@ This post is about UE 4.26 in particular, but most of these details probably hav
 
 I will sometimes link straight to the UE source on Github at some points. If you don't have access to it yet, you can get it for free in just a couple of seconds by following [this guide](https://www.unrealengine.com/en-US/ue4-on-github).
 
-### UObjects
+## UObjects
 
 Let's get into it then! The purpose of this post is to explain how `UObject`, `UClass`, `UBlueprint`, `UBlueprintGeneratedClass` and other concepts like the Class Default Object all interact. Hopefully this post works as sort of a crash course on the base classes of the engine.
 
@@ -59,15 +59,15 @@ public:
 
 A few things happened here: We derived from `UObject`, which is the base class for objects managed by Unreal and is required to get our class garbage collected, replicated over the network, serialized, and more. We also had to rename our class to `UMyObject`, as that is the naming convention for classes that derive from `UObject`. We also added a couple of includes, and a couple of macros, which are required to get Unreal Header Tool (UHT) to automatically generate some code for us when we compile.
 
-Note that these macros just expand to more macros, and won't help us understand what's going on (although you can peek at them [here](https://github.com/EpicGames/UnrealEngine/blob/5df54b7ef1714f28fb5da319c3e83d96f0bedf08/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L638) if you want). Instead, these macros work more as annotations: UHT will parse this code, see those anotations (like `UCLASS()`), and know that it needs to generate some code about that class and place it somewhere (and obviously remove the annotations afterwards).
+Note that these macros just expand to more macros, and won't help us understand what's going on (although you can peek at [the UCLASS macro](https://github.com/EpicGames/UnrealEngine/blob/5df54b7ef1714f28fb5da319c3e83d96f0bedf08/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L638) if you want). Instead, these macros work more as annotations: UHT will parse this code, see those anotations (like `UCLASS()`), and know that it needs to generate some code about that class and place it somewhere (and obviously remove the annotations afterwards).
 
 Part of that generated code goes in that `"MyObject.generated.h"` file, and part of that code is injected in the location of that `GENERATED_BODY()` macro just before we compile. You will likely never need to interact with the `"*.generated.h"` files though, and that's good, because there's some pretty crazy auto-generated code in there.
 
-You can provide some optional arguments to some of these annotations, like how we did `UCLASS( BlueprintType )`. That one in particular allows our `UMyObject` objects to interact with blueprints, but you can check out all the optional arguments you can provide on the actual source [here](https://github.com/EpicGames/UnrealEngine/blob/2bf1a5b83a7076a0fd275887b373f8ec9e99d431/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L653).
+You can provide some optional arguments to some of these annotations, like how we did `UCLASS( BlueprintType )`. That one in particular allows our `UMyObject` objects to interact with blueprints, but you can check the source for [all the optional arguments you can provide for UCLASS](https://github.com/EpicGames/UnrealEngine/blob/2bf1a5b83a7076a0fd275887b373f8ec9e99d431/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L653).
 
-If you're interested about this part, you can find some more details about reflection on [this](https://www.unrealengine.com/en-US/blog/unreal-property-system-reflection) excellent post by Michael Noland, and on [the official doc page](https://docs.unrealengine.com/en-US/ProgrammingAndScripting/ProgrammingWithCPP/UnrealArchitecture/Objects/index.html) for the unreal `UObject`s.
+If you're interested about this part, you can find some more details about reflection on [this excellent post by Michael Noland](https://www.unrealengine.com/en-US/blog/unreal-property-system-reflection), and on [the official doc page](https://docs.unrealengine.com/en-US/ProgrammingAndScripting/ProgrammingWithCPP/UnrealArchitecture/Objects/index.html) for the unreal `UObject`s.
 
-### UClasses
+## UClasses
 
 An important aspect of annotating our class for UHT like this is that it leads to a `UClass` object being generated for our `UMyObject` during engine initialization (both in the editor and for a packaged game). We also get a static function `UMyObject::StaticClass()` automatically generated and injected into our class definition, so we can do this to get a `UClass` object:
 
@@ -109,7 +109,7 @@ public:
 };
 ```
 
-I've added the `UFUNCTION` and `UPROPERTY()` annotations with some useful self-explanatory optional arguments this time. You can find all of the optional arguments for `UFUNCTION` enumerated [here](https://github.com/EpicGames/UnrealEngine/blob/2bf1a5b83a7076a0fd275887b373f8ec9e99d431/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L795) and for `UPROPERTY` enumerated [here](https://github.com/EpicGames/UnrealEngine/blob/2bf1a5b83a7076a0fd275887b373f8ec9e99d431/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L887).
+I've added the `UFUNCTION` and `UPROPERTY()` annotations with some useful self-explanatory optional arguments this time. You can check the source for a list with all [the optional arguments for `UFUNCTION`](https://github.com/EpicGames/UnrealEngine/blob/2bf1a5b83a7076a0fd275887b373f8ec9e99d431/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L795), and for [the optional arguments for `UPROPERTY`](https://github.com/EpicGames/UnrealEngine/blob/2bf1a5b83a7076a0fd275887b373f8ec9e99d431/Engine/Source/Runtime/CoreUObject/Public/UObject/ObjectMacros.h#L887).
 
 Now that our members are annotated, we could iterate our `UClass`'s fields and actually get info on our data members, like this:
 
@@ -139,7 +139,7 @@ for ( TFieldIterator<UFunction> FunctionIterator( MyObjectsClass );
 
 We can of course get tons of more useful information about those properties and functions, including their value size, metadata. This is the actual "reflection" capability I mentioned previously: Objects of `UMyObject` can query what data members and functions they own, and read/write to them. 
 
-### Class default objects
+## Class default objects
 
 One very important member of the `UClass` instance we got there is the Class Default Object (CDO). This object is just another instance of our `UMyObject` class, but it is owned by the `UClass` directly. It will hold the default values for our properties, and in some contexts it is used as a template for all other created instances. These CDOs are used everywhere throughout the engine, and have some surprising uses. 
 
@@ -205,7 +205,7 @@ bShowShortTooltips=True
 ...
 ```
 
-### Debugging CDOs
+## Debugging CDOs
 
 Let's have a look at those CDOs and `UClass` objects in practice. In order to make it easy for us to analyze our objects, I'll make a quick actor that I can place on the level and interact with. It doesn't matter much for this post, but if you want to follow along it looks like this:
 
@@ -274,7 +274,7 @@ UMyObject::UMyObject()
 }
 ```
 
-### UBlueprints
+## UBlueprints
 
 Objects of our `UMyObject` class can be manipulated by the engine now: Instances of those would be replicated, serialized and garbage collected like you'd expect, and can interact with the many different subsystems in Unreal, like Niagara and the Sequencer and whatever. This could be all you need, especially if whatever you're building is more on the C++ side.
 
@@ -384,7 +384,7 @@ Also notice how in neither case the objects constructed before we changed the CD
 
 As a closing remark, note that I edited the CDO like this to prove a point, but be careful when doing that in your project: The engine only creates one CDO for each class, and that is used as template for instances spawned in the editor, as well any instances spawned when you're testing via Play In Editor. Additionally, the CDO's values for `UBlueprintGeneratedClass`es are saved directly to the `UBlueprint` asset. This means that if you go into Play In Editor, get your CDO modified, then exit Play in Editor and save the `UBlueprint` asset, those changes would persist forever, and this is likely not what you want.
 
-### Conclusion
+## Conclusion
 
 Congratulations on surviving this UE4 whirlwind tour!
 
