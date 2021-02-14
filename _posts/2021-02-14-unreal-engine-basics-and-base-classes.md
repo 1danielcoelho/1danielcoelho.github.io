@@ -317,7 +317,7 @@ If you peek a few lines below `SuperStruct`, you can see the `Children` and `Chi
 
 Finally, you can see two extra things: The `ClassGeneratedBy` field of this `UBlueprintGeneratedClass` points at our `UBlueprint` asset we saw at the content browser. Also, we can see at the very bottom of this image how the `UBlueprintGeneratedClass` is pointing at the CDO of `DerivedObject` that we retrieved on the previous image.
 
-Lets try modifying our `DerivedObject` a little bit. I'll add an extra empty function, a variable, and change the CDO value for `MyValue`. You can also see the CDO's value for the `NewVariable` on the right pane:
+Lets try modifying our `DerivedObject` a little bit. I'll add an extra empty function (pointed in red), a variable, and change the CDO value for `MyValue` to `5.0f`. You can also see the CDO's value for the `NewVariable` on the right pane:
 
 ![BlueprintGeneratedClass](/assets/images/unreal-engine-basics-and-base-classes/edited-derived-object-bp.png)
 
