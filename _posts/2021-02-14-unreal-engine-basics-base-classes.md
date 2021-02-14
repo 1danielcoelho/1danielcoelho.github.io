@@ -246,7 +246,7 @@ void AMyActor::ReceiveMyObject( UMyObject* Object )
 
 I've placed a breakpoint at the end of `ReceiveMyObject`, so we can have a look at what happens when we give this function an instance of `UMyObject`:
 
-![UMyObject instance received](/assets/images/unreal-engine-basics-base-classes/my-object-cdo-ann.png)
+![UMyObject instance received debug](/assets/images/unreal-engine-basics-base-classes/my-object-cdo-ann.png)
 
 First of all, as a sanity check we can confirm (underlined in red) that `Object->GetClass() == UMyObject::StaticClass()`. That is also the same thing we get if we drill down to the `ClassPrivate` field of Object. We can also see that we can use `GetArchetypeInstances` to find all objects that have `CDO` as a default in any way, and it found the same object that we received (underlined in green). "Archetype" here just roughly means that the object can be used as a template. There's more nuance to that, but we'll explore this in more detail in a future post.
 
@@ -292,7 +292,7 @@ I'll name our derived blueprint class "`DerivedObject`", so we now get a new ass
 
 This asset is a `UBlueprint` asset, also known as a `Blueprint Class`. This is not a `UClass`, nor a CDO, nor an instance of `DerivedObject`, it is something entirely different. If you double-click this it will open a Blueprint Editor, that looks like this:
 
-![DerivedObject editor](/assets/images/unreal-engine-basics-base-classes/derived-object-editor-ann.png)
+![DerivedObject blueprint editor](/assets/images/unreal-engine-basics-base-classes/derived-object-editor-ann.png)
 
 The red arrow points to the base class: In our case it corresponds to our `UMyObject` class. If you click on the `Class Defaults` button pointed to in orange, the area on the right (pointed to in green) will display some property values.
 
@@ -304,13 +304,13 @@ Another useful thing to know is that if you have a few instances of `DerivedObje
 
 Let's have a look at what happens when we provide a `DerivedObject` to our `ReceiveMyObject` function from before. Remember, `UMyObject` is a parent class of `DerivedObject`, and because our parameter is just a pointer to the base class, we can receive a `DerivedObject` with no changes to our function.
 
-![DerivedObject's CDO](/assets/images/unreal-engine-basics-base-classes/derived-object-cdo.png)
+![Received DerivedObject debug](/assets/images/unreal-engine-basics-base-classes/derived-object-cdo.png)
 
 Check it out, `Object`'s class, and it's CDO class are no longer the same as `UMyObject::StaticClass()`, they're something else now. If you look at the type (far right on the lines underlined in green) you'll see that they're `UBlueprintGeneratedClass`, being pointed to via a `UClass*`. The rest is working as expected though: It can find the same object we received when we check `InstancesOfCDO`.
 
 The `UBlueprintGeneratedClass` type derives from `UClass`, and describes a `UClass` that was generated based on a `UBlueprint`. When you open the Blueprint Editor like before and add a function or a variable, a new `UBlueprintGeneratedClass` will be generated, containing the compiled info from your blueprint. Let's expand that `UBlueprintGeneratedClass` we got:
 
-![BlueprintGeneratedClass](/assets/images/unreal-engine-basics-base-classes/blueprint-gen-class.png)
+![BlueprintGeneratedClass expanded on debug](/assets/images/unreal-engine-basics-base-classes/blueprint-gen-class.png)
 
 At the very top, still underlined in green, you can see that the same `UClass` object at address `0x0000021d0d70dd00` we were looking at in the previous image. Check it out though, if you drill down to its `UStruct` base class, you can see underlined in red how it is pointing at `UMyObject::StaticClass()` as a `SuperStruct` (i.e. parent class). The exact same `UClass` is also underlined in red on the previous image.
 
@@ -320,11 +320,11 @@ Finally, you can see two extra things: The `ClassGeneratedBy` field of this `UBl
 
 Lets try modifying our `DerivedObject` a little bit. I'll add an extra empty function (pointed in red), a variable, and change the CDO value for `MyValue` to `5.0f`. You can also see the CDO's value for the `NewVariable` on the right pane:
 
-![BlueprintGeneratedClass](/assets/images/unreal-engine-basics-base-classes/edited-derived-object-bp.png)
+![DerivedObject on blueprint editor with added members](/assets/images/unreal-engine-basics-base-classes/edited-derived-object-bp.png)
 
 If we compile this, then provide a new `DerivedObject` to `ReceiveMyObject` and peek at its `UBlueprintGeneratedClass` again, this is what we get:
 
-![BlueprintGeneratedClass](/assets/images/unreal-engine-basics-base-classes/edited-derived-object-bp-debug.png)
+![BlueprintGeneratedClass expanded on debug](/assets/images/unreal-engine-basics-base-classes/edited-derived-object-bp-debug.png)
 
 Underlined in blue you can see how `Children` now points to the new `TestFunction`, and how `ChildProperties` now points to our `NewVariable`. These were `nullptr` before. Also, Visual Studio is telling us something here: Note how our CDO at the very bottom is written in red text: This means the field has changed, and it is now pointing at a new object entirely. 
 
