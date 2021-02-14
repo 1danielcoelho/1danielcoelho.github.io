@@ -385,7 +385,7 @@ As a closing remark, note that I edited the CDO like this to prove a point, but 
 
 ### Conclusion
 
-Congratulations for surviving this UE4 whirlwind tour!
+Congratulations on surviving this UE4 whirlwind tour!
 
 This turned out a lot larger than I thought it would, sorry about that. Even so there are many more things to talk about, but hopefully this helps to get some traction with the base UE4 C++ classes. It is quite a lot of stuff to take in at once, that's for sure.
 
