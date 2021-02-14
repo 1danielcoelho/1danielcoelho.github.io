@@ -9,7 +9,7 @@ kramdown:
 # Setup
 title: Daniel Coelho's blog
 tagline: 'Software engineering and other stuff'
-description: 'Software engineering and other stuff'
+description: 'Blog posts about software engineering, Unreal Engine, AI, and more. Also lists my personal projects (whenever I finish them)'
 url: "https://1danielcoelho.github.io"
 baseurl: "/"
 github: [metadata]

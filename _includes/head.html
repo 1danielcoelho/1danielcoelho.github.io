@@ -23,6 +23,9 @@
         {{ page.title }} &middot; {{ site.title }}
         {% endif %}
     </title>
+    
+    <!-- From https://blog.webjeda.com/optimize-jekyll-seo/ -->
+    <meta itemprop="description" name="description" content="{% if page.description %}{{ page.description | truncate: 160 }}{% else %}{{ site.description | truncate: 160  }}{% endif %}" />
 
     <!-- CSS -->
     <link rel="stylesheet" href="/assets/css/poole.css">
