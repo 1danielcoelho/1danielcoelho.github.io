@@ -1,0 +1,60 @@
+#![enable(implicit_some)]
+(
+    name: "Planet line up",
+    description: "All planets and moons lined up next to eachother for size comparisons",
+    time: "J2000",
+    simulation_scale: 0,
+    camera_pos: [-112, 1319, 116],
+    camera_up: [0, 0, 1],
+    camera_target: [0, 0, 0],
+    bodies: [
+        (
+            source: "major_bodies/10",
+            pos: [0, 0, 0],
+            brightness: 1E24,
+        ),
+        (
+            source: "major_bodies/199",
+            pos: [700, 0, 0],
+        ),
+        (
+            source: "major_bodies/299",
+            pos: [710, 0, 0],
+        ),
+        (
+            source: "major_bodies/399",
+            pos: [725, 0, 0],
+        ),
+        (
+            source: "major_bodies/499",
+            pos: [740, 0, 0],
+        ),
+        (
+            source: "major_bodies/599",
+            pos: [815, 0, 0],
+        ),
+        (
+            name: "Saturn",
+            source: "major_bodies/699",
+            pos: [940, 0, 0],
+            rot: [0, -45, 0],
+        ),
+        (
+            source: "artificial/saturn_rings",
+            parent: "Saturn",
+            rot: [0, -45, 0],
+        ),
+        (
+            source: "major_bodies/799",
+            pos: [1020, 0, 0],
+        ),
+        (
+            source: "major_bodies/899",
+            pos: [1070, 0, 0],
+        ),
+        (
+            source: "major_bodies/999",
+            pos: [1100, 0, 0],
+        ),
+    ]
+)

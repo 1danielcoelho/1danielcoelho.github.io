@@ -1,0 +1,53 @@
+#![enable(implicit_some)]
+(
+    name: "All major planets and moons",
+    description: "All planets and moons in the solar system. No asteroids, comets or artificial bodies.",
+    time: "J2000",
+    simulation_scale: 500,
+    bodies: [
+        (
+            source: "major_bodies/10",
+        ),
+        (
+            source: "major_bodies/199",
+        ),
+        (
+            source: "major_bodies/299",
+        ),
+        (
+            source: "major_bodies/399",
+        ),
+        (
+            source: "major_bodies/499",
+        ),
+        (
+            source: "major_bodies/599",
+        ),
+        (
+            name: "Saturn",
+            source: "major_bodies/699",
+        ),
+        (
+            source: "artificial/saturn_rings",
+            parent: "Saturn",
+        ),
+        (
+            source: "major_bodies/799",
+        ),
+        (
+            source: "major_bodies/899",
+        ),
+        (
+            source: "major_bodies/999",
+        ),
+        (
+            source: "jovian_satellites/*",
+        ),
+        (
+            source: "saturnian_satellites/*",
+        ),
+        (
+            source: "other_satellites/*",
+        ),
+    ]
+)
