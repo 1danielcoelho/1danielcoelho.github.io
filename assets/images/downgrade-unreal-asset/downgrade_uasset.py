@@ -42,7 +42,7 @@ updated_values = {
     "Release": 38,
 }
 target_folder = r"E:\Work\Unreal projects\Retail4262\Content\From427"
-asset_types = ["uasset"]
+asset_types = ["uasset", "umap"]
 
 update_engine_version = True
 engine_major_version = 4
@@ -80,7 +80,7 @@ def flip_endianess(orig_bytes):
 guids_bytes = {key:flip_endianess(binascii.unhexlify(value)) for (key, value) in guids.items()}
 asset_version_bytes = build_version_bytes(asset_major_version, asset_minor_version, asset_changelist)
 engine_version_bytes = build_version_bytes(engine_major_version, engine_minor_version, engine_changelist)
-assert(len(asset_version_bytes), len(engine_version_bytes))
+assert(len(asset_version_bytes) == len(engine_version_bytes))
 
 for file_path in collect_files(target_folder, asset_types):
     print(file_path)
