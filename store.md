@@ -19,8 +19,20 @@ To use them, just make sure [Anki Desktop](https://apps.ankiweb.net/) is install
 
 Make sure you use a valid e-mail when purchasing, as the deck will be sent to that e-mail address.
 
-<form action="https://buy.stripe.com/5kA14tbXb8UDfcc145" method="get" target="_blank">
-   USD$ 15.00  <button type="submit" class="btn">Buy now!</button>
+<div style="display: flex; justify-content: space-between;">
+<form action="https://buy.stripe.com/eVa7sRf9ndaT4xyeUW" method="get" target="_blank">
+   USD 15.00  <button type="submit" class="btn">Buy now!</button>
 </form>
+
+<div style="display: flex; justify-content: space-between;">
+<form action="https://buy.stripe.com/4gwdRfe5jeeX1lm149" method="get" target="_blank">
+   BRL 80.00  <button type="submit" class="btn">Buy now!</button>
+</form>
+<div title="Stripe can only charge Brazillian cards in BRL">
+(❔)
+</div>
+</div>
+
+</div>
 
 <hr>
