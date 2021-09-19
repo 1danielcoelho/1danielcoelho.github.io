@@ -28,7 +28,7 @@ Make sure you use a valid e-mail when purchasing, as the deck will be sent to th
 <form action="https://buy.stripe.com/4gwdRfe5jeeX1lm149" method="get" target="_blank">
    BRL 80.00  <button type="submit" class="btn">Buy now!</button>
 </form>
-<div title="Stripe can only charge Brazillian cards in BRL">
+<div title="I can only charge Brazillian cards via Stripe in BRL">
 (❔)
 </div>
 </div>
