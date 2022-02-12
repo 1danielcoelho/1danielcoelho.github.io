@@ -14,7 +14,7 @@ One major, sneaky problem with this is that you may run into trouble when using 
 First, let's have a look what happens when all you have is uniform scaling:
 
 ``` C++
-FTransform A{ 
+FTransform A{
     FRotator{},                 // Rotation
     FVector{1.0f, 2.0f, 3.0f},  // Translation
     FVector{2.0f, 2.0f, 2.0f}   // Scale
@@ -30,19 +30,19 @@ FVector PosAfterAInv = AInv.TransformPosition( PosAfterA );
 Print all this out and you get something like this:
 
 ```
-A: 
-    Trans:    [1.0, 2.0, 3.0]; 
+A:
+    Trans:    [1.0, 2.0, 3.0];
     Rot:      [0.0, 0.0, 0.0, 1.0];  // Quaternions btw
     Scale:    [2.0, 2.0, 2.0]
 
-AInv: 
-    Trans:    [-1.0, -2.0, -3.0]; 
-    Rot:      [0.0, 0.0, 0.0, 1.0]; 
+AInv:
+    Trans:    [-1.0, -2.0, -3.0];
+    Rot:      [0.0, 0.0, 0.0, 1.0];
     Scale:    [0.5, 0.5, 0.5]
 
-AMaybeIdentity: 
-    Trans:    [0.0, 0.0, 0.0]; 
-    Rot:      [0.0, 0.0, 0.0, 1.0]; 
+AMaybeIdentity:
+    Trans:    [0.0, 0.0, 0.0];
+    Rot:      [0.0, 0.0, 0.0, 1.0];
     Scale:    [1.0, 1.0, 1.0]
 
 Pos:          [50.0, 60.0, 70.0]
@@ -53,7 +53,7 @@ PosAfterAInv: [50.0, 60.0, 70.0]
 Nothing weird here. `AMaybeIdentity` is actually the identity, and transforming `Pos` with `A` and then `AInv` gets us back to `Pos`. Let's use non-uniform scaling instead:
 
 ``` C++
-FTransform B{ 
+FTransform B{
     FRotator{},                   // Rotation
     FVector{ 1.0f, 2.0f, 3.0f },  // Translation
     FVector{ 2.0f, 1.0f, 1.0f }   // Scale
@@ -69,19 +69,19 @@ FVector PosAfterBInv = BInv.TransformPosition( PosAfterB );
 Print the `B` case we get this:
 
 ```
-B: 
-    Trans:    [1.0, 2.0, 3.0]; 
-    Rot:      [0.0, 0.0, 0.0, 1.0]; 
+B:
+    Trans:    [1.0, 2.0, 3.0];
+    Rot:      [0.0, 0.0, 0.0, 1.0];
     Scale:    [2.0, 1.0, 1.0]
 
-BInv: 
-    Trans:    [-0.5, -2.0, -3.0]; 
-    Rot:      [0.0, 0.0, 0.0, 1.0]; 
+BInv:
+    Trans:    [-0.5, -2.0, -3.0];
+    Rot:      [0.0, 0.0, 0.0, 1.0];
     Scale:    [0.5, 1.0, 1.0]
 
-BMaybeIdentity: 
-    Trans:    [0.0, 0.0, 0.0]; 
-    Rot:      [0.0, 0.0, 0.0, 1.0]; 
+BMaybeIdentity:
+    Trans:    [0.0, 0.0, 0.0];
+    Rot:      [0.0, 0.0, 0.0, 1.0];
     Scale:    [1.0, 1.0, 1.0]
 
 Pos:          [50.0, 60.0, 70.0]
@@ -94,7 +94,7 @@ PosAfterBInv: [50.0, 60.0, 70.0]
 Let's just add a small rotation:
 
 ``` C++
-FTransform C{ 
+FTransform C{
     FRotator{ 10.0f, 20.0f, 30.0f },    // Rotation
     FVector{ 1.0f, 2.0f, 3.0f },        // Translation
     FVector{ 2.0f, 1.0f, 1.0f }         // Scale
@@ -110,19 +110,19 @@ FVector PosAfterCInv = CInv.TransformPosition( PosAfterC );
 This is what we get now:
 
 ```
-C: 
-    Trans:    [1.0, 2.0, 3.0]; 
-    Rot:      [-0.239298329, -0.127679437, 0.144878119, 0.951548517]; 
+C:
+    Trans:    [1.0, 2.0, 3.0];
+    Rot:      [-0.239298329, -0.127679437, 0.144878119, 0.951548517];
     Scale:    [2.0, 1.0, 1.0]
 
-CInv: 
-    Trans:    [-1.65730095 -0.102469981 -3.23926759]; 
-    Rot:      [0.239298329, 0.127679437, -0.144878119, 0.951548517]; 
+CInv:
+    Trans:    [-1.65730095 -0.102469981 -3.23926759];
+    Rot:      [0.239298329, 0.127679437, -0.144878119, 0.951548517];
     Scale:    [0.5, 1.0, 1.0]
 
-CMaybeIdentity: 
-    Trans:    [0.0, 0.0, 0.0]; 
-    Rot:      [0.0, 0.0, 0.0, 1.0]; 
+CMaybeIdentity:
+    Trans:    [0.0, 0.0, 0.0];
+    Rot:      [0.0, 0.0, 0.0, 1.0];
     Scale:    [1.0, 1.0, 1.0]
 
 Pos:          [50.0, 60.0, 70.0]
@@ -130,7 +130,7 @@ PosAfterC:    [58.8023224, 115.580849, 50.5213852]
 PosAfterCInv: [73.2543716, 66.2024841, 79.0265503] <--- !!!
 ```
 
-Oh... oh no... 
+Not great.
 
 Check how sneaky this is! `CMaybeIdentity` is still actually an identity. Only when you transform a point with `C` and then `CInv` that you see the problem: `PosAfterCInv != Pos`.
 
@@ -152,13 +152,13 @@ FTransform FTransform::Inverse() const
 }
 ```
 
-The root of the problem is that `FTransform::TransformPosition` **always scales, then rotates, then translates, whether you're applying a transform or the inverse of a transform**. 
+The root of the problem is that `FTransform::TransformPosition` **always scales, then rotates, then translates, whether you're applying a transform or the inverse of a transform**.
 
 Ignore the translation for now: If you only have *uniform* scaling, then inverting the transform by applying the inverse scaling and then the inverse rotation is not a problem: It doesn't matter what rotation you applied to the object, since you'll scale it uniformly anyway.
 
-The problem is that if you have non-uniform scaling, applying the inverse transform will first apply the inverse scale and only later inverse the rotation. This means the inverse scaling will happen around the rotated axes! 
+The problem is that if you have non-uniform scaling, applying the inverse transform will first apply the inverse scale and only later inverse the rotation. This means the inverse scaling will happen around the rotated axes!
 
-To invert it properly using a decomposed representation you would need to do the steps in the reverse order: First apply the reverse translation, then apply the reverse rotation, and finally apply the reverse scale, which is not something that `FTransform::TransformPosition` will do. 
+To invert it properly using a decomposed representation you would need to do the steps in the reverse order: First apply the reverse translation, then apply the reverse rotation, and finally apply the reverse scale, which is not something that `FTransform::TransformPosition` will do.
 
 In UE you have 3 practical ways around this problem:
 
