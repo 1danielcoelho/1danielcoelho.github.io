@@ -55,7 +55,7 @@ pub fn add(a: i32, b: i32) -> i32 {
 }
 ```
 
-And here's what build.bat looks like:
+And here's what `build.bat` looks like:
 ``` bat
 @echo off
 
@@ -101,11 +101,11 @@ Annoyingly you can't just double-click your html and look at the result on the b
 
 # Ergonomics upgrade
 
-To make this slightly handier, we'll do what [Ian suggested](https://ianjk.com/rust-gamejam/)and setup a dev server and automatic reloading whenever we save a file.
+To make this slightly handier, we'll do what [Ian suggested](https://ianjk.com/rust-gamejam/) and setup a dev server and automatic reloading whenever we save a file.
 
 For this part, you'll need to setup two crates:
-- [cargo-watch](https://github.com/watchexec/cargo-watch) (just run `cargo install cargo-watch`)
-- [devserver](https://github.com/kettle11/devserver) (just run `cargo install devserver`)
+- [cargo-watch](https://github.com/watchexec/cargo-watch) (just run `cargo install cargo-watch`);
+- [devserver](https://github.com/kettle11/devserver) (just run `cargo install devserver`);
 
 There are other alternatives if all you want is a dev server with automatic reloading (you can run a Python command, just use some vscode extensions, etc.) but I like that its just another Rust crate instead.
 
@@ -115,7 +115,7 @@ START "" devserver --path dist --reload
 cargo watch -d 0.05 -- build.bat
 ```
 
-It should be pretty obvious: It will host the files on the `dist` folder (by default on `http://localhost:8080/` but you can change it). The second line starts `cargo watch` to observe your project and run `build.bat` 0.05 seconds after any file changes (the wait period is there as some file operations trigger multiple filesystem notices in quick succession). You can also specify glob patterns to ignore particular files of directories, but by default `cargo watch` will ignore anything on your .gitignore, which tends to work pretty well.
+It should be pretty obvious: It will host the files on the `dist` folder (by default on `http://localhost:8080/` but you can change it). The second line starts `cargo watch` to observe your project and run `build.bat` 0.05 seconds after any file changes (the wait period is there as some file operations trigger multiple filesystem notices in quick succession). You can also specify glob patterns to ignore particular files or directories, but by default `cargo watch` will ignore anything on your .gitignore, which tends to work pretty well.
 
 Also note that the first command is run with `START` to run it on a separate command prompt (as it will block it while it runs) that you can mostly put away. The second command will run on your current terminal, which is good because that's where your `cargo build` output (compile errors and so on) will end up, which you likely want to keep an eye on.
 
