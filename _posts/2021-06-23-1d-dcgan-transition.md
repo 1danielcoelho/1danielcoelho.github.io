@@ -5,7 +5,9 @@ tags: deep-learning
 description: How to setup and train a DCGAN for 1D data capable of generating gaussian curves
 ---
 
-I have a long-term goal of making a GAN that is capable of generating songs similar to the provided training data, mostly as a learning exercise. The idea would be to operate on waveforms directly using convolution, instead of deferring to MIDI approaches. 
+I have a long-term goal of making a GAN that is capable of generating songs similar to the provided training data, mostly as a learning exercise. The idea would be to operate on waveforms directly using convolution, instead of deferring to MIDI approaches.
+
+> See this post [on Substack!](https://danielcoelho.substack.com/p/1d-dcgan-transition)
 
 In the end I imagine I'll try replicating something like [jukebox](https://openai.com/blog/jukebox/) from OpenAI using VQ-VAE, but for now I'm sticking to DCGAN-like model, except that 1d.
 
@@ -314,9 +316,9 @@ I opted for the Adam optimizer with very slow training rates as these data are o
 
 We're using soft labels in order to try and make things a bit more difficult for the Discriminator. The point is that if the discriminator starts getting everything right all the time there will be no gradients to train with, and no progress. On top of that, along with the usage of Dropout layers, soft labels force the discriminator to be more robust.
 
-Note that we run the discriminator on `fake_batch` twice. As far as I can tell this is actually the right thing to do: When training the generator from `generator_loss.backward()` we need the errors to flow back from `fake_output` all the way to `generator`, so we obviously need to call `discriminator(fake_batch)`. When training the discriminator from `discriminator_loss.backward()` we also need the errors to flow from `fake_loss` through the `discriminator`, but the loss function being used is different, so the errors and gradients at the `discriminator` will be different. Pytorch really doesn't seem to allow direct manipulation of the computation graphs ([1](https://discuss.pytorch.org/t/how-to-detach-specific-components-in-the-loss/13983/11), [2](https://discuss.pytorch.org/t/quick-detach-question/1090/11)), so it means we need to run the discriminator again. We can at least detach `fake_batch` there though, as we don't care about those errors flowing back up to the generator. 
+Note that we run the discriminator on `fake_batch` twice. As far as I can tell this is actually the right thing to do: When training the generator from `generator_loss.backward()` we need the errors to flow back from `fake_output` all the way to `generator`, so we obviously need to call `discriminator(fake_batch)`. When training the discriminator from `discriminator_loss.backward()` we also need the errors to flow from `fake_loss` through the `discriminator`, but the loss function being used is different, so the errors and gradients at the `discriminator` will be different. Pytorch really doesn't seem to allow direct manipulation of the computation graphs ([1](https://discuss.pytorch.org/t/how-to-detach-specific-components-in-the-loss/13983/11), [2](https://discuss.pytorch.org/t/quick-detach-question/1090/11)), so it means we need to run the discriminator again. We can at least detach `fake_batch` there though, as we don't care about those errors flowing back up to the generator.
 
-There are entirely different ways to organize a GAN training loop that avoids this double call to `discriminator(fake_batch)` (check "strategy 2" on [this](https://www.fatalerrors.org/a/detach-when-pytorch-trains-gan.html) very helpful reference), but the trade-off involves retaining the computational graph (with `discriminator_loss.backward(retain_graph=True)`) between generator and discriminator training steps, which can lead to higher memory usage. In my case the batch size is the limiting factor in the training process as a whole, so using that approach actually led to a loss of performance. 
+There are entirely different ways to organize a GAN training loop that avoids this double call to `discriminator(fake_batch)` (check "strategy 2" on [this](https://www.fatalerrors.org/a/detach-when-pytorch-trains-gan.html) very helpful reference), but the trade-off involves retaining the computational graph (with `discriminator_loss.backward(retain_graph=True)`) between generator and discriminator training steps, which can lead to higher memory usage. In my case the batch size is the limiting factor in the training process as a whole, so using that approach actually led to a loss of performance.
 
 ## Results
 
@@ -351,7 +353,7 @@ Here is what sample generator outputs (red) look like when compared to the ideal
 
 [![Sample at batch 3000](/assets/images/1d-dcgan-transition/3000.png)](/assets/images/1d-dcgan-transition/3000.png)
 
-You can see that something really interesting happens right around batch 900, which is right about where we see those harsh transitions on the progress plot. I'm still a beginner at deep learning and GANs, so I'm not entirely sure what exactly, but please let me know if you have any ideas. 
+You can see that something really interesting happens right around batch 900, which is right about where we see those harsh transitions on the progress plot. I'm still a beginner at deep learning and GANs, so I'm not entirely sure what exactly, but please let me know if you have any ideas.
 
 Another interesting thing I've noticed is that GANs seem to reach a minimum loss at some point, and then progressively diverge, in some ways. Here is an entirely different training process (with all the same parameters) that was left training for way too long:
 
@@ -359,11 +361,11 @@ Another interesting thing I've noticed is that GANs seem to reach a minimum loss
 
 Again, "the transition" happens around batch 900, but you can see that the generator loss tends to slowly increase after having reached a minimum near batch 4000 or so. The discriminator loss tends to decrease over time too, with the average outputs for real and fake samples diverging in score, which is a bad sign: Ideally the discriminator outputs should converge to the same value as the generated samples become more and more similar to the training data, which doesn't happen here.
 
-Also, as far as I can tell the fact that the norm of generator/discriminator weights also never seem to taper off suggests that it's either learning too fast or that it's beginning to overfit the training data. 
+Also, as far as I can tell the fact that the norm of generator/discriminator weights also never seem to taper off suggests that it's either learning too fast or that it's beginning to overfit the training data.
 
 ## Conclusion
 
-It was pretty easy to find some references/recommendations on how to *write* a Pytorch GAN, but I struggled to find references that helped me make sense of the reasoning behind some of those choices, and also had trouble finding references that helped me debug the training process as a whole. Hopefully this post helps in that area, and shows a bit how a GAN training process should *feel* like. 
+It was pretty easy to find some references/recommendations on how to *write* a Pytorch GAN, but I struggled to find references that helped me make sense of the reasoning behind some of those choices, and also had trouble finding references that helped me debug the training process as a whole. Hopefully this post helps in that area, and shows a bit how a GAN training process should *feel* like.
 
 In future posts I really want to investigate what is happening to these weights during "the transition", and also measure the impact of some of those choices, like Dropout layers and hyperparameter values, so stay tuned!
 

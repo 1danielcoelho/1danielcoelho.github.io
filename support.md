@@ -3,9 +3,7 @@ layout: page
 title: Support
 ---
 
-You can support me on Ko-fi, or get a copy of the Anki flash cards I use to practice some C++ tricks!
-
-<script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Me on Ko-fi', '#29abe0', 'V7V8D0D5B');kofiwidget2.draw();</script>
+You can support me on [Substack](https://danielcoelho.substack.com/), or get a copy of the Anki flash cards I use to practice some C++ tricks!
 
 <hr>
 

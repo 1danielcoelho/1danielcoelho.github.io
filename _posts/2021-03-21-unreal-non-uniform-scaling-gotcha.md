@@ -7,6 +7,8 @@ description: How to use non-uniform scaling FTransforms in Unreal Engine and avo
 
 So this issue cost me about a day of my life. Hopefully you get to this post before the problem wastes your time too.
 
+> See this post [on Substack!](https://danielcoelho.substack.com/p/unreal-non-uniform-scaling-gotcha)
+
 The `FTransform` struct in UE is a decomposed transform representation, which means it internally just contains an `FQuat` rotation, an `FVector` translation and a `FVector` scale. This is in contrast with `FMatrix`, which is just a regular 4x4 matrix that can be used as a transformation.
 
 One major, sneaky problem with this is that you may run into trouble when using non-uniform scaling (i.e. the scale vector has different values for two or more components, like `[3.0, 1.0, 1.0]`).

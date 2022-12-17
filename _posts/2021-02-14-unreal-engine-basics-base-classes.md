@@ -7,6 +7,8 @@ description: How UObject, UClass, UBlueprint, UBlueprintGeneratedClass and other
 
 This is going to be the first of a few of blog posts detailing some stuff I've learned doing deep dives in the Unreal Engine source.
 
+> See this post [on Substack!](https://danielcoelho.substack.com/p/unreal-engine-basics-base-classes)
+
 This is mostly to get the ball rolling as far as this blog is concerned (as working with Unreal is a large part of my day job and should be the easiest to write about), but also because UE's documentation is not the best, and there's a surprising shortage of posts like this out there. It seems like the community just assumes everyone is forced to dig through the code, and while there's nothing fundamentally wrong with reading code, it does get in the way a bit when all you want is an overview. It also sucks that everyone has to rediscover the same insights over and over, so hopefully this can provide a net saving of man hours to the world.
 
 This post is about UE 4.26 in particular, but most of these details probably haven't changed much since UE 3.
@@ -116,32 +118,32 @@ Now that our members are annotated, we could iterate our `UClass`'s fields and a
 ```cpp
 UClass* MyObjectsClass = UMyObject::StaticClass();
 
-for ( TFieldIterator<FProperty> PropertyIterator( MyObjectsClass ); 
-      PropertyIterator; 
+for ( TFieldIterator<FProperty> PropertyIterator( MyObjectsClass );
+      PropertyIterator;
       ++PropertyIterator )
 {
     FProperty* Property = *PropertyIterator;
-    
+
     // Would log "MyValue" and "MyValueArray"
-    UE_LOG( LogTemp, Log, TEXT( "%s" ), *Property->GetName() ); 
+    UE_LOG( LogTemp, Log, TEXT( "%s" ), *Property->GetName() );
 }
 
-for ( TFieldIterator<UFunction> FunctionIterator( MyObjectsClass ); 
-      FunctionIterator; 
+for ( TFieldIterator<UFunction> FunctionIterator( MyObjectsClass );
+      FunctionIterator;
       ++FunctionIterator )
 {
     UFunction* Func = *FunctionIterator;
-    
+
     // Would log Multiply
-    UE_LOG( LogTemp, Log, TEXT( "%s" ), *FunctionIterator->GetName() ); 
+    UE_LOG( LogTemp, Log, TEXT( "%s" ), *FunctionIterator->GetName() );
 }
 ```
 
-We can of course get tons of more useful information about those properties and functions, including their value size, metadata. This is the actual "reflection" capability I mentioned previously: Objects of `UMyObject` can query what data members and functions they own, and read/write to them. 
+We can of course get tons of more useful information about those properties and functions, including their value size, metadata. This is the actual "reflection" capability I mentioned previously: Objects of `UMyObject` can query what data members and functions they own, and read/write to them.
 
 ## Class default objects
 
-One very important member of the `UClass` instance we got there is the Class Default Object (CDO). This object is just another instance of our `UMyObject` class, but it is owned by the `UClass` directly. It will hold the default values for our properties, and in some contexts it is used as a template for all other created instances. These CDOs are used everywhere throughout the engine, and have some surprising uses. 
+One very important member of the `UClass` instance we got there is the Class Default Object (CDO). This object is just another instance of our `UMyObject` class, but it is owned by the `UClass` directly. It will hold the default values for our properties, and in some contexts it is used as a template for all other created instances. These CDOs are used everywhere throughout the engine, and have some surprising uses.
 
 For example, configuration and "options" container objects in Unreal are usually just `UObject`s too, and the properties are the actual options that you can set. When you edit them on the editor, what you're doing is editing the CDO object's values for those properties, and those values can be saved to disk and read back again later.
 
@@ -260,7 +262,7 @@ If you doubted me before about the `UClass` holding the reflected data about mem
 
 I've expanded `UMyObject`'s `UClass`. We can clearly in red where it holds information about our `Multiply` `UFunction`, as well as our `MyValue` float property and our `MyValueArray` array property. It stores it in a linked list, and there's no sign of our `UnAnnotatedValue`, since it wasn't annotated. It would have been pointed to by the `Next` pointer in green if it were annotated though.
 
-One last important thing you should know about CDOs: It's very likely that they will be constructed during engine initialization along with their owner `UClass` objects, where a lot of other things aren't fully initialized. The CDO is otherwise just a regular instance of our `UMyObject` though, and it will call the regular C++ constructor when being created, if you have one defined. This means that whatever we put in our constructors for `UObject`-derived classes like our `UMyObject` shouldn't really expect much from its context or try using other classes too much, as they may not have been initialized yet. 
+One last important thing you should know about CDOs: It's very likely that they will be constructed during engine initialization along with their owner `UClass` objects, where a lot of other things aren't fully initialized. The CDO is otherwise just a regular instance of our `UMyObject` though, and it will call the regular C++ constructor when being created, if you have one defined. This means that whatever we put in our constructors for `UObject`-derived classes like our `UMyObject` shouldn't really expect much from its context or try using other classes too much, as they may not have been initialized yet.
 
 If it's unavoidable, you can usually check if that particular instance of `UMyObject` is a CDO or not by calling `UObject::IsTemplate()`, and not doing your context-dependent initialization in that case. Something like this:
 
@@ -282,7 +284,7 @@ If you're building something more on the visual scripting side, then you'll like
 
 [![Creating a blueprint](/assets/images/unreal-engine-basics-base-classes/create-blueprint.png)](/assets/images/unreal-engine-basics-base-classes/create-blueprint.png)
 
-... and then choosing our `UMyObject` object as a base class (note that the `U` prefix is dropped here, as well as through most of the Editor). 
+... and then choosing our `UMyObject` object as a base class (note that the `U` prefix is dropped here, as well as through most of the Editor).
 
 [![Deriving UMyObject](/assets/images/unreal-engine-basics-base-classes/deriving-myobject.png)](/assets/images/unreal-engine-basics-base-classes/deriving-myobject.png)
 
@@ -326,7 +328,7 @@ If we compile this, then provide a new `DerivedObject` to `ReceiveMyObject` and 
 
 [![BlueprintGeneratedClass expanded on debug](/assets/images/unreal-engine-basics-base-classes/edited-derived-object-bp-debug.png)](/assets/images/unreal-engine-basics-base-classes/edited-derived-object-bp-debug.png)
 
-Underlined in blue you can see how `Children` now points to the new `TestFunction`, and how `ChildProperties` now points to our `NewVariable`. These were `nullptr` before. Also, Visual Studio is telling us something here: Note how our CDO at the very bottom is written in red text: This means the field has changed, and it is now pointing at a new object entirely. 
+Underlined in blue you can see how `Children` now points to the new `TestFunction`, and how `ChildProperties` now points to our `NewVariable`. These were `nullptr` before. Also, Visual Studio is telling us something here: Note how our CDO at the very bottom is written in red text: This means the field has changed, and it is now pointing at a new object entirely.
 
 This is because every time you compile your `UBlueprint`, the engine will replace all instances of your `UBlueprintGeneratedClass` with brand new ones (copying over any custom property values you could have), and that includes the CDO. If you want to have a look at this part of the source, I recommend starting out [at this file](https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Editor/UnrealEd/Public/Kismet2/KismetReinstanceUtilities.h).
 
