@@ -7,8 +7,6 @@ description: How to setup and train a DCGAN for 1D data capable of generating ga
 
 I have a long-term goal of making a GAN that is capable of generating songs similar to the provided training data, mostly as a learning exercise. The idea would be to operate on waveforms directly using convolution, instead of deferring to MIDI approaches.
 
-> See this post [on Substack!](https://danielcoelho.substack.com/p/1d-dcgan-transition)
-
 In the end I imagine I'll try replicating something like [jukebox](https://openai.com/blog/jukebox/) from OpenAI using VQ-VAE, but for now I'm sticking to DCGAN-like model, except that 1d.
 
 For this article we'll start a lot smaller and just try to get a GAN to generate a Gaussian curve. The training data will be 10k different 100-sample .wav files that all contain a single centered Gaussian curve with some normal noise. I'm going to be using Pytorch and torchaudio.

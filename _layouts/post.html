@@ -22,6 +22,12 @@ layout: default
     {{ content }}
 </div>
 
+<div style="margin-bottom: 2em; text-align: center">
+	<a href='https://ko-fi.com/V7V8D0D5B' target='_blank'>
+		<img height='36' style='border:0px;height:48px;display:block;margin:auto' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+	</a>
+</div>
+
 <script src="/assets/js/prism.js"></script>
 
 <script src="https://utteranc.es/client.js" repo="1danielcoelho/1danielcoelho.github.io" issue-term="pathname"
@@ -52,7 +58,7 @@ layout: default
                 {% endif %}
             {% endfor %}
 
-            {% if sameTagCount >= minCommonTags %}            
+            {% if sameTagCount >= minCommonTags %}
                 <li>
                     <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
 
@@ -61,7 +67,7 @@ layout: default
                             {{ post.date | date: "%b %-d, %Y" }}
                         </a>
                     </small>
-        
+
                     {%- for tag in commonTags -%}
                     <small>
                         <a class="post-tag" href="/tag_index#{{tag}}">
@@ -71,13 +77,13 @@ layout: default
                     {%- endfor -%}
 
                 </li>
-                
+
                 {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
                 {% if maxRelatedCounter >= maxRelated %}
                     {% break %}
                 {% endif %}
             {% endif %}
-                
+
         {% endfor %}
     </ul>
 </div>

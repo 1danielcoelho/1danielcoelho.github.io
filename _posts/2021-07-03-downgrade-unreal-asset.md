@@ -7,8 +7,6 @@ description: How to move an asset from a newer UnrealEngine version to an older 
 
 You try updating your project to a newer Unreal Engine version, play around for a bit and realize you need to revert to a previous version. You already changed and resaved some of your assets though, what can you do?
 
-> See this post [on Substack!](https://danielcoelho.substack.com/p/downgrade-unreal-asset)
-
 I couldn't find a solution to this after a quick search, but I've used a hack for this before that could be useful. Note that this is sort of a "last resort", and should almost always be a bad idea.
 
 > DISCLAIMER: Please make sure you backup your assets somewhere else before trying this, as this hack could permanently destroy them!

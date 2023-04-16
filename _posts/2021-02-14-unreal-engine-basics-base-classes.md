@@ -7,8 +7,6 @@ description: How UObject, UClass, UBlueprint, UBlueprintGeneratedClass and other
 
 This is going to be the first of a few of blog posts detailing some stuff I've learned doing deep dives in the Unreal Engine source.
 
-> See this post [on Substack!](https://danielcoelho.substack.com/p/unreal-engine-basics-base-classes)
-
 This is mostly to get the ball rolling as far as this blog is concerned (as working with Unreal is a large part of my day job and should be the easiest to write about), but also because UE's documentation is not the best, and there's a surprising shortage of posts like this out there. It seems like the community just assumes everyone is forced to dig through the code, and while there's nothing fundamentally wrong with reading code, it does get in the way a bit when all you want is an overview. It also sucks that everyone has to rediscover the same insights over and over, so hopefully this can provide a net saving of man hours to the world.
 
 This post is about UE 4.26 in particular, but most of these details probably haven't changed much since UE 3.

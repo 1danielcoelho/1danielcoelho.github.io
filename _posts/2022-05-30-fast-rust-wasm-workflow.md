@@ -7,8 +7,6 @@ description: How to set up a simple and minimal workflow for developing Rust app
 
 This post describes a simple and minimal workflow for developing Rust apps targetting WASM and running them on the browser with minimal iteration time.
 
-> See this post [on Substack!](https://danielcoelho.substack.com/p/fast-rust-wasm-workflow)
-
 The official guides for working with Rust and WebAssembly are great ([Rust and WebAssembly](https://rustwasm.github.io/docs/book/), [The `wasm-bindgen` Guide](https://rustwasm.github.io/docs/wasm-bindgen/)), but they really railroad you into a setup where on top of Cargo you need npm, wasm-pack and webpack. You haven't even run anything yet and you have two package managers and two bundlers!
 
 Depending on what you want to do, you can achieve the same with a lot less. Lets go through the bare minimum first, and then we'll make it slightly more ergonomic.
