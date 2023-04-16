@@ -1,40 +1,43 @@
 <div class="sidebar">
-    <div class="container sidebar-sticky">
-        <div class="sidebar-about">
-            <h1>
-                {{ site.title }}
-            </h1>
-            <p class="lead">{{ site.tagline }}</p>
-        </div>
+	<div class="container sidebar-sticky">
+		<div>
+			<div class="sidebar-about">
+				<h1>
+					{{ site.title }}
+				</h1>
+				<p class="lead">{{ site.tagline }}</p>
+			</div>
 
-        <nav class="sidebar-nav">
-            <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="/">Home</a>
+			<nav class="sidebar-nav">
+				<a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="/">Home</a>
 
-            {% comment %}
-            The code below dynamically generates a sidebar nav of pages with
-            `layout: page` in the front-matter. See readme for usage.
-            {% endcomment %}
+				{% comment %}
+				The code below dynamically generates a sidebar nav of pages with
+				`layout: page` in the front-matter. See readme for usage.
+				{% endcomment %}
 
-            {% assign pages_list = site.pages %}
-            {% for node in pages_list %}
-            {% if node.title != null %}
-            {% if node.layout == "page" %}
-            <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{
-                node.title }}</a>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
+				{% assign pages_list = site.pages %}
+				{% for node in pages_list %}
+				{% if node.title != null %}
+				{% if node.layout == "page" %}
+				<a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{
+					node.title }}</a>
+				{% endif %}
+				{% endif %}
+				{% endfor %}
 
-        </nav>
+			</nav>
+		</div>
 
-        <a href="mailto:{{ site.author.email }}" title="Email"><i class="fa fa-envelope-square"></i></a>
-        <a href="//www.github.com/{{ site.author.github }}" title="GitHub"><i class="fa fa-github-square"></i></a>
-        <a href="//www.linkedin.com/in/{{ site.author.linkedin }}" title="LinkedIn"><i
-                class="fa fa-linkedin-square"></i></a>
-        <a href="/atom.xml" title="RSS"><i class="fa fa-rss-square"></i></a>
-
-        <small><small>
-                <p>&copy; 2021 Daniel Coelho. All rights reserved.</p>
-            </small></small>
-    </div>
+		<div>
+			<a href="mailto:{{ site.author.email }}" title="Email"><i class="fa fa-envelope-square"></i></a>
+			<a href="//www.github.com/{{ site.author.github }}" title="GitHub"><i class="fa fa-github-square"></i></a>
+			<a href="//www.linkedin.com/in/{{ site.author.linkedin }}" title="LinkedIn"><i class="fa fa-linkedin-square"></i></a>
+			<a href="/atom.xml" title="RSS"><i class="fa fa-rss-square"></i></a>
+			<small><small>
+					<p style="white-space: pre-line;">&copy; 2021 Daniel Coelho.
+All rights reserved.</p>
+				</small></small>
+		</div>
+	</div>
 </div>

@@ -52,7 +52,7 @@ html {
 
 .sidebar {
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 1rem;
   color: rgba(255, 255, 255, 0.5);
   background-color: #202020;
 }
@@ -62,7 +62,7 @@ html {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 18rem;
+    width: 16rem;
     text-align: left;
   }
 }
@@ -104,10 +104,13 @@ a.sidebar-nav-item:focus {
 
 @media (min-width: 48em) {
   .sidebar-sticky {
-    position: absolute;
+    /* position: absolute; */
+	display: flex;
+	flex-direction:column;
+	justify-content:space-between;
     right: 1rem;
-    bottom: 1rem;
     left: 1rem;
+	height:100%;
   }
 }
 

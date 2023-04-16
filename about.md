@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 
-<h2>me</h2>
+<h2>Me</h2>
 
 ![me](/assets/images/me.jpg "2014 me next to Neuschwanstein with Neuschwanstein cropped out")
 
@@ -11,7 +11,7 @@ I'm a senior software engineer with experience in C++, 3D, Unreal Engine and som
 
 I'm sort of a generalist, and at the moment my main areas of interest are 3D graphics, space and AI.
 
-<h2>this page</h2>
+<h2>This page</h2>
 
 The main goal of this website is to get me embarassed for having an empty website, so that I feel more pressure to actually complete my side projects and write more. I'll probably write mostly about software engineering, but maybe about other stuff too.
 
