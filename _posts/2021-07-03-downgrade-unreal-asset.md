@@ -100,7 +100,7 @@ This should do it. Realistically though, not just `Dev-Rendering` will change be
 
 ## The faster workaround
 
-I made [a small Python 3 script](/assets/images/downgrade-unreal-asset/downgrade_uasset.py) that should help with the tediousness of this, though. It will make sure that e.g. the value for `Dev-Rendering` is *at most* the one that you set it. It has all the custom versions listed on [DevObjectVersion.cpp](https://github.com/EpicGames/UnrealEngine/blob/c3caf7b6bf12ae4c8e09b606f10a09776b4d1f38/Engine/Source/Runtime/Core/Private/UObject/DevObjectVersion.cpp#L110) plus the `Release` custom version, but you may need to manually add others that fit your cases, as individual plugins may also define their own custom version.
+I made [a small Python 3 script](/assets/other/downgrade_uasset.py) that should help with the tediousness of this, though. It will make sure that e.g. the value for `Dev-Rendering` is *at most* the one that you set it. It has all the custom versions listed on [DevObjectVersion.cpp](https://github.com/EpicGames/UnrealEngine/blob/c3caf7b6bf12ae4c8e09b606f10a09776b4d1f38/Engine/Source/Runtime/Core/Private/UObject/DevObjectVersion.cpp#L110) plus the `Release` custom version, but you may need to manually add others that fit your cases, as individual plugins may also define their own custom version.
 
 Hopefully the script is self-explanatory: The idea is to watch the UE Output Log for errors like we originally saw:
 ```
