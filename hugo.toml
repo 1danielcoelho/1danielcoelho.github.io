@@ -1,0 +1,98 @@
+baseURL = "https://1danielcoelho.github.io/"
+locale = "en-us"
+title = "Daniel Coelho's Blog"
+theme = "PaperMod"
+
+enableRobotsTXT = true
+enableEmoji = true
+summaryLength = 40
+pagination.pagerSize = 10
+
+# Match the old Jekyll permalinks exactly (`permalink: /:title/`), so every
+# previously published URL keeps working: /unreal-engine-vscode-workflow/ etc.
+[permalinks.page]
+  posts = "/:slug/"
+
+[taxonomies]
+  tag = "tags"
+
+# HTML + RSS + a JSON index that powers the search page
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup.highlight]
+  # Emit CSS classes rather than inline styles, so PaperMod's syntax colours
+  # follow the light/dark toggle. Replaces the old vendored prism plugin.
+  noClasses = false
+  codeFences = true
+  guessSyntax = false
+  lineNos = false
+  tabWidth = 4
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.tableOfContents]
+  startLevel = 1
+  endLevel = 3
+
+[params]
+  env = "production"          # enables PaperMod's OpenGraph / Twitter / JSON-LD output
+  author = "Daniel Coelho"
+  description = "Blog posts about software engineering, Unreal Engine, AI, and more."
+  keywords = ["Unreal Engine", "C++", "Rust", "WebAssembly", "PyTorch", "deep learning", "software engineering"]
+  DateFormat = "2 January 2006"
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+  ShowWordCount = false
+  hidemeta = false
+  comments = false
+  images = ["me.jpg"]
+
+  [params.homeInfoParams]
+    Title = "Daniel Coelho's Blog"
+    Content = "Software engineering and other stuff. Mostly Unreal Engine, C++ and AI topics."
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/1danielcoelho"
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/daniel-coelho-103109b7"
+  [[params.socialIcons]]
+    name = "rss"
+    url = "index.xml"
+
+  [params.assets]
+    favicon = "/favicon.ico"
+    apple_touch_icon = "/apple-touch-icon-144-precomposed.png"
+    disableFingerprinting = false
+
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    threshold = 0.4
+    minMatchCharLength = 2
+    keys = ["title", "permalink", "summary", "content"]
+
+[[menu.main]]
+  identifier = "posts"
+  name = "Posts"
+  url = "/posts/"
+  weight = 10
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
+  weight = 20
+[[menu.main]]
+  identifier = "search"
+  name = "Search"
+  url = "/search/"
+  weight = 30
