@@ -7,7 +7,7 @@ tags: ["unreal", "typescript"]
 ShowToc: false
 ---
 
-Some months ago I vibe-coded a browser-based Unreal Engine asset viewer and forgot to publish or mention it anywhere.
+Some months ago I vibe-coded a browser-based Unreal Engine asset viewer and forgot to publish or mention it anywhere. I thought it was pretty interesting to see how the bytes are actually laid out on the file.
 
 You can try it out **[here](https://1danielcoelho.github.io/uassets/)**. It contains some sample assets as well so you don't need any .uasset ready on your end.
 
@@ -15,7 +15,7 @@ Here is what it looks like:
 
 [![Screenshot of the UAsset viewer](asset-viewer.png)](asset-viewer.png)
 
-It parses `.uasset` and `.umap` files and shows you the bytes and parses their meaning with names attached.
+It parses `.uasset` and `.umap` files, shows you the raw bytes, parses values and describes what the fields mean.
 
 It's purely client-side: The file never leaves your machine and nothing is uploaded anywhere.
 
