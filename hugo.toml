@@ -82,6 +82,12 @@ pagination.pagerSize = 10
     keys = ["title", "permalink", "summary", "content"]
 
 [[menu.main]]
+  identifier = "home"
+  name = "Home"
+  url = "/"
+  weight = 5
+
+[[menu.main]]
   identifier = "posts"
   name = "Posts"
   url = "/posts/"
