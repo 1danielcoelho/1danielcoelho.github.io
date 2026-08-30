@@ -1,0 +1,90 @@
+/* ---------------------------------------------------------------------------
+   Vines — decorative growth up the left gutter.
+
+   Sits entirely OUTSIDE the 768px content column, so nothing is ever drawn
+   behind text and reading contrast is unchanged.
+
+   Eight independent layers, one per vine, each tiling vertically. Giving each a
+   different height is what staggers where they finish: they all start at the top
+   and stop at different points down the page, the last just short of the bottom.
+
+   Markup comes from layouts/_partials/extend_footer.html, which shadows
+   PaperMod's own empty hook — no theme file is modified, so this survives
+   `git submodule update`.
+
+   The SVGs carry their own colours (that is what allows per-leaf variation), so
+   they are used as background images, not masks. Regenerate them with
+   `python tools/vines.py`.
+   --------------------------------------------------------------------------- */
+
+:root {
+    --vine-width: 150px;
+    --vine-tile: 1200px;   /* must match H in tools/vines.py */
+    --vine-brightness: 1;
+}
+
+:root[data-theme="dark"] {
+    /* The baked colours are mid-tones that read on both backgrounds; dark just
+       wants a touch more lift. */
+    --vine-brightness: 1.08;
+}
+
+body {
+    position: relative;
+}
+
+.vines {
+    display: none;             /* enabled by the width query below */
+    position: absolute;
+    top: 0;
+    bottom: 0;                 /* top+bottom, not height: spans the whole page */
+    left: 0;
+    width: var(--vine-width);
+    overflow: hidden;
+    pointer-events: none;      /* never intercept clicks or text selection */
+    filter: brightness(var(--vine-brightness));
+}
+
+.vine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-repeat: repeat-y;
+    background-size: var(--vine-width) var(--vine-tile);
+    /* No fade: the background is simply clipped at the element's bottom edge, so
+       each vine stops outright instead of dissolving. */
+}
+
+/* Heights are deliberately not in left-to-right order — a monotonic sequence
+   reads as a wedge rather than as growth thinning out. */
+.vine-1 { height: 72%; background-image: url("/vine-1.svg"); }
+.vine-2 { height: 30%; background-image: url("/vine-2.svg"); }
+.vine-3 { height: 88%; background-image: url("/vine-3.svg"); }
+.vine-4 { height: 58%; background-image: url("/vine-4.svg"); }
+.vine-5 { height: 95%; background-image: url("/vine-5.svg"); }
+.vine-6 { height: 41%; background-image: url("/vine-6.svg"); }
+.vine-7 { height: 79%; background-image: url("/vine-7.svg"); }
+.vine-8 { height: 66%; background-image: url("/vine-8.svg"); }
+
+/* Content column is 768px. Only show the vines once the gutter can hold them
+   at full width without crowding the text: 768 + 2 * 150 = 1068. */
+@media screen and (min-width: 1100px) {
+    .vines {
+        display: block;
+    }
+}
+
+/* Decorative only — drop them when the reader has asked for higher contrast,
+   and never spend ink on them. */
+@media (prefers-contrast: more) {
+    .vines {
+        display: none;
+    }
+}
+
+@media print {
+    .vines {
+        display: none;
+    }
+}
