@@ -55,6 +55,9 @@ pagination.pagerSize = 10
   comments = false
   images = ["me.jpg"]
 
+  [params.analytics.google]
+    SiteVerificationTag = "-h-Wvf1xymZTjFAESipSCOslKa12P_nFes0W7tCs0gg"
+
   [params.homeInfoParams]
     Title = "Daniel Coelho's Blog"
     Content = "Software engineering and other stuff. Mostly Unreal Engine, C++ and AI topics."
