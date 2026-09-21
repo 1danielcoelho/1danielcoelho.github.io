@@ -47,6 +47,10 @@ VINES = [
     ( 79.0, 13.0, 3, 2.60, 1.5),
     (104.0, 17.0, 1, 4.40, 2.1),
     (131.0, 10.0, 2, 1.40, 1.7),
+    # Rightmost, nearest the text column, and stopped very high up by the CSS —
+    # a thin young shoot. Appended last on purpose: the RNG is consumed in list
+    # order, so adding here leaves vine-1..8 byte-identical on regeneration.
+    (142.0,  5.0, 2, 3.90, 1.1),
 ]
 
 

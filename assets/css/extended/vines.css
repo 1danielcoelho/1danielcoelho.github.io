@@ -4,7 +4,7 @@
    Sits entirely OUTSIDE the 768px content column, so nothing is ever drawn
    behind text and reading contrast is unchanged.
 
-   Eight independent layers, one per vine, each tiling vertically. Giving each a
+   Nine independent layers, one per vine, each tiling vertically. Giving each a
    different height is what staggers where they finish: they all start at the top
    and stop at different points down the page, the last just short of the bottom.
 
@@ -56,16 +56,29 @@ body {
        each vine stops outright instead of dissolving. */
 }
 
-/* Heights are deliberately not in left-to-right order — a monotonic sequence
-   reads as a wedge rather than as growth thinning out. */
-.vine-1 { height: 72%; background-image: url("/vine-1.svg"); }
-.vine-2 { height: 30%; background-image: url("/vine-2.svg"); }
-.vine-3 { height: 88%; background-image: url("/vine-3.svg"); }
-.vine-4 { height: 58%; background-image: url("/vine-4.svg"); }
-.vine-5 { height: 95%; background-image: url("/vine-5.svg"); }
-.vine-6 { height: 41%; background-image: url("/vine-6.svg"); }
-.vine-7 { height: 79%; background-image: url("/vine-7.svg"); }
-.vine-8 { height: 66%; background-image: url("/vine-8.svg"); }
+/* Where each vine stops. Two rules govern these numbers:
+
+   1. Spread them across the WHOLE page, not just the lower half. A couple stop
+      near the top, a couple around the middle, the rest trail off below, so the
+      growth thins out gradually instead of all cutting out at once near the end.
+   2. Keep the spacing uneven. Evenly spaced stops read as a deliberate gradient;
+      the gaps below are deliberately lumpy (44/52 nearly pair up, 26 sits alone)
+      so it reads as growth instead.
+
+   Sorted, the stops are 8 15 26 44 52 68 83 91 97 — but they are assigned to the
+   vines out of order, because a monotonic left-to-right sequence reads as a
+   wedge. Heights are CSS-only; changing them does NOT require rerunning
+   tools/vines.py. */
+.vine-1 { height: 97%; background-image: url("/vine-1.svg"); }
+.vine-2 { height: 44%; background-image: url("/vine-2.svg"); }
+.vine-3 { height: 83%; background-image: url("/vine-3.svg"); }
+.vine-4 { height: 15%; background-image: url("/vine-4.svg"); }
+.vine-5 { height: 91%; background-image: url("/vine-5.svg"); }
+.vine-6 { height: 26%; background-image: url("/vine-6.svg"); }
+.vine-7 { height: 68%; background-image: url("/vine-7.svg"); }
+.vine-8 { height: 52%; background-image: url("/vine-8.svg"); }
+/* Rightmost, nearest the text column: a short shoot that stops almost at once. */
+.vine-9 { height:  8%; background-image: url("/vine-9.svg"); }
 
 /* Content column is 768px. Only show the vines once the gutter can hold them
    at full width without crowding the text: 768 + 2 * 150 = 1068. */
